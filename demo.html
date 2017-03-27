@@ -2,13 +2,31 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="demo.css">
-    <script type="text/javascript" src="demo.js"></script>
+    <link rel="stylesheet" href="demo2.css">
+    <script type="text/javascript" src="demo2.js"></script>
 </head>
 <body>
-<div id="demo"></div>
+    <form>
+        <div class="switcher">
+            <input type="radio" name="housesButton" checked="checked" id="1houseButton">
+            <label for="1houseButton" onclick="start(document.getElementById('demo'), 1 ,'')">1 House</label>
+            <input type="radio" name="housesButton" id="4houseButton">
+            <label for="4houseButton" onclick="start(document.getElementById('demo'), 4 ,'')">4 Houses</label>
+            <div class="clear"></div>
+        </div>
+        <div class="switcherLabel">Bar graph style:</div>
+        <div class="switcher">
+            <input type="radio" name="complexityButton" checked="checked" id="simpleButton">
+            <label for="simpleButton" onclick="start(document.getElementById('demo'), '' ,'basic')">Simple</label>
+            <input type="radio" name="complexityButton" id="complexButton">
+            <label for="complexButton" onclick="start(document.getElementById('demo'), '' ,'complex')">Detailed</label>
+            <div class="clear"></div>
+        </div>
+    </form>
+<div id="demo">
+</div>
 <script type="text/javascript">
-    start(document.getElementById('demo'));
+    start(document.getElementById('demo'), 1, 'basic');
 </script>
 </body>
 </html>
