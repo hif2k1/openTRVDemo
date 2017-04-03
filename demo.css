@@ -2,27 +2,133 @@ body {
     font-family: sans-serif;
     font-weight: bold;
     margin:0px;
-    size:1rem;
 }
 
 #demo {
-    padding:30px;
     height:800px;
+    width:800px;
+    margin-top:10px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.largeScreen .house {
-    width:50%;
-    height:50%;
     position: relative;
-    float: left;
 }
 
-.smallScreen .house {
+.guideText {
+    position:absolute;
+    border:solid grey 2px;
+    padding:1%;
+    border-radius: 5px;
+    overflow: auto;
+}
+.demoContainer.landscape .guideText {
+    right:5%;
+    width:41%;
+    height:100%;
+}
+.demoContainer.portrait .guideText {
+    bottom:0%;
+    width:100%;
+    height:45%;
+}
+.guideTextContent {
+    font-weight: normal;
+    margin-top:5px;
+}
+.button {
+    background-color: #faa;
+    position:absolute;
+    bottom:3%;
+    cursor:pointer;
+    padding:5px;
+    border-radius: 3px;
+}
+.button:hover {
+    background-color: #e99;
+}
+.button.reset {
+    left:3%;
+}
+.button.next {
+    right:3%;
+}
+
+.housesContainer {
+    position:absolute;
+    width:50%;
+    height:100%;
+}
+.demoContainer.landscape .housesContainer{
+    width:50%;
+    height:100%;
+}
+.demoContainer.portrait .housesContainer{
+    width:100%;
+    height:50%;
+}
+
+.demoContainer.noTRV .house.noTRV,  .demoContainer.tradTRV .house.tradTRV,
+.demoContainer.openTRV .house.openTRV, .demoContainer.openTRVBoilerControl .house.openTRVBoilerControl {
+    left:5%;
+    top:0%;
     width:100%;
     height:80%;
-    position: relative;
+}
+.demoContainer.noTRV .house.tradTRV { left:2%;}
+.demoContainer.noTRV .house.openTRV { left:35%;}
+.demoContainer.noTRV .house.openTRVBoilerControl { left:68%;}
+.demoContainer.tradTRV .house.noTRV { left: 2%;}
+.demoContainer.tradTRV .house.openTRV { left:35%;}
+.demoContainer.tradTRV .house.openTRVBoilerControl { left:68%;}
+.demoContainer.openTRV .house.noTRV { left: 2%;}
+.demoContainer.openTRV .house.tradTRV { left:35%;}
+.demoContainer.openTRV .house.openTRVBoilerControl { left:68%;}
+.demoContainer.openTRVBoilerControl .house.noTRV { left: 2%;}
+.demoContainer.openTRVBoilerControl .house.tradTRV { left:35%;}
+.demoContainer.openTRVBoilerControl .house.openTRV { left:68%;}
+
+.house.notSelected:hover {top:78%;}
+.house {
+    width:30%;
+    height:20%;
+    position: absolute;
+    top:80%;
+    left:0%;
+    transition: all 0.8s;
+}
+
+.house.selected {
+    left:5%;
+    top:0%;
+    width:50%;
+    height:80%;
+}
+
+.house:before{
+    content:'house';
+    position: absolute;
+    display: block;
+    font-weight: bold;
+    z-index:2;
+    background: white;
+    background: rgba(200,200,200,0.5);
+    border-radius: 5px;
+    padding:3px;
+    font-size: 0.9em;
+}
+
+.house.selected:before {font-size: 1.1em;}
+.house.selected.noTRV:before{ content: 'No radiator valves';}
+.house.selected.tradTRV:before{ content: 'Thermostatic valves (TRVs)';}
+.house.selected.openTRV:before{ content: 'RadBot valves';}
+.house.selected.openTRVBoilerControl:before{ content: 'RadBot + boiler control';}
+
+.house.noTRV:before {content: "No valves";}
+.house.tradTRV:before {content: "Thermostatic";}
+.house.openTRV:before {content: "RadBot";}
+.house.openTRVBoilerControl:before {content: "RadBot+";}
+
+.clear {
+    clear: both;
 }
 
 .roof{
@@ -73,27 +179,6 @@ body {
     transition: background-color 1s;
 }
 
-.room:hover:after {
-    content: '';
-    display: block;
-    position: absolute;
-    border-radius: 5px;
-    bottom:80%;
-    left:10%;
-    min-width:100px;
-    padding:5px;
-    text-align: center;
-    z-index: 3;
-    background: rgba(200,200,200,0.9);
-    border: solid 2px #555;
-    font-weight: normal;
-}
-
-.room.roomNumber0:hover:after { content: 'This room is the same as the room with the thermostat so the temperature is kept ok';}
-.room.roomNumber1:hover:after { content: 'This room heats quicker than the room with the thermostat so it will overheat without a TRV';}
-.room.roomNumber2:hover:after { content: 'This room heats slower than the room with the thermostat so it will never get warm enough even with a TRV';}
-.room.roomNumber3:hover:after { content: 'This room has the thermostat so the temperature in here is always just right';}
-
 .radiator {
     position:absolute;
     top: 65%;
@@ -121,10 +206,10 @@ body {
 
 .valve {
     position:absolute;
-    right:-10px;
+    right:-20%;
     bottom:0px;
-    width:10px;
-    height:20px;
+    width:20%;
+    height:60%;
     background-size: cover;
 }
 
@@ -137,10 +222,9 @@ body {
     background-color: white;
     border: 2px solid grey;
 }
+.house.notSelected .thermostat {display: none;}
 
-.openTRVBoilerControl .thermostat {
-    display: none;
-}
+.house.selected.openTRVBoilerControl .thermostat {display: none;}
 
 .thermostat:after {
     width:12px;
@@ -152,31 +236,10 @@ body {
     display: inline-block;
 }
 
-.house.tradTRV .valve {
-    background-image: url('tradTRV.png');
-}
+.house.tradTRV .valve {background-image: url('tradTRV.png');}
+.house.openTRV .valve,  .house.openTRVBoilerControl .valve {background-image: url('openTRV.png');}
+.house.tradTRV .roomNumber3 .valve, .house.openTRV  .roomNumber3 .valve{display: none;}
 
-.house.openTRV .valve,  .house.openTRVBoilerControl .valve {
-    background-image: url('openTRV.png');
-}
-
-.house:before{
-    content:'house';
-    position: absolute;
-    display: block;
-    font-weight: bold;
-    font-size:1.1em;
-    z-index:2;
-    background: white;
-    background: rgba(200,200,200,0.5);
-    border-radius: 7px;
-    padding:7px;
-}
-
-.house.noTRV:before{ content: 'No radiator valves';}
-.house.tradTRV:before{ content: 'Thermostatic valves (TRVs)';}
-.house.openTRV:before{ content: 'RadBot';}
-.house.openTRVBoilerControl:before{ content: 'RadBot + boiler control';}
 
 .boiler {
     position: absolute;
@@ -269,6 +332,10 @@ body {
     width: 0;
 }
 
+.house.notSelected .avatarSpeech {
+    display:none;
+}
+
 .avatarSpeech:after {
     content:"";
     display: block;
@@ -282,87 +349,79 @@ body {
 }
 
 .energyBar {
-    height:10%;
-    width: 0%;
-    background-color: #afa;
+    height:5%;
+    width: 100%;
     clear: both;
     margin-top: 3px;
     position: relative;
     font-weight: normal;
-    border-left: 4px solid grey;
-    transition: width 1s linear;
-}
-
-.energyBar.selected {
-    font-weight: bold;
-    border-left: 4px solid red;    
-}
-
-.smallScreen .energyBar {
-    top: -10%;
-    height:5%;
-}
-
-.largeScreen .energyBar {
+    border-left: 1px solid grey;
     top: 1%;
 }
 
-.energyBar:before {
+.house.selected .energyBar:before {
     z-index: 2;
     display: block;
     background: rgba(200,200,200,0.5);
     position:absolute;
-    padding:2px;
     white-space: nowrap;
 }
+.house.selected .energyBar:before {content:'Cost';}
+.house.selected .comfortBar:before {content:'Comfort';}
 
-.energyBar.noTRV:before {content: "No valves";}
-.energyBar.tradTRV:before {content: "TRVs";}
-.energyBar.openTRV:before {content: "RadBot";}
-.energyBar.openTRVBoilerControl:before {content: "RadBot + boiler control";}
+.house.selected .energyBar.noTRV .wastedBar:hover:after {content: "Cost of heating empty rooms and overheating rooms";}
+.house.selected .energyBar.tradTRV .wastedBar:hover:after {content: "Cost of heating empty rooms";}
+.house.selected .energyBar.openTRV .wastedBar:hover:after {content: "Cost of heating one empty room";}
+.house.selected .energyBar.openTRVBoilerControl .wastedBar:hover:after {
+    content: "Extra heat requested by RadBots for rooms that wouldn't get up to temperature otherwise";
+    background-color: #ada;
+}
+.house.selected .energyBar.openTRVBoilerControl.selected .barGraph.wastedBar {
+    background-color: #ada;
+}
 
-.energyBar.noTRV:hover .wastedBar:after {content: "Energy wasted (overheating rooms and heating empty rooms)";}
-.energyBar.tradTRV:hover .wastedBar:after {content: "Energy wasted (heating empty rooms)";}
-.energyBar.openTRV:hover .wastedBar:after {content: "Energy wasted (running boiler when not needed)";}
+.house.selected .wastedBar:hover:after {content: '';}
+.house.selected .usedBar:hover:after {content: 'Cost of heating occupied rooms';}
+.house.selected .overheatingBar:hover:after {content: 'Energy wasted overheating rooms';}
 
-.wastedBar {
+.house.selected .coldBar:hover:after {content: 'Time feeling too cold';}
+.house.selected .comfortableBar:hover:after {content: 'Time feeling just right';}
+.house.selected .hotBar:hover:after {content: 'Time feeling too hot';}
+
+.barGraph {
     height:100%;
-    width: 50%;
-    background-color: #FAA;
-    position: absolute;
-    right:0px;
+    width: 0%;
+    background-color: #afa;
+    float:left;
+    font-weight: normal;
     transition: width 1s linear;
 }
 
-.energyBar:hover .wastedBar:after {
-    font-weight: normal;
-    content: 'Energy wasted';
-    display: block;
-    position: absolute;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    bottom:110%;
-    min-width:100px;
-    padding:5px;
-    text-align: center;
-    z-index: 3;
-    background: rgba(255,170,170,0.9);
-    border: solid 2px rgb(255,170,170);
-}
+.barGraph.usedBar {background-color: #afa;}
+.barGraph.wastedBar {background-color: #faa;}
+.barGraph.overheatingBar {background-color: #f77;}
+.house.selected .barGraph.usedBar:hover:after {background-color: rgba(170,255,170,0.9);}
+.house.selected .barGraph.wastedBar:hover:after {background-color: rgba(255,170,170,0.9);}
+.house.selected .barGraph.overheatingBar:hover:after {background-color: rgba(255,119,119,0.9);}
 
-.energyBar:hover .wastedBar:before {
+.barGraph.coldBar{background-color: #aaf;}
+.barGraph.comfortableBar{background-color: #afa;}
+.barGraph.hotBar{background-color: #f77;}
+.house.selected .barGraph.coldBar:hover:after {background-color: rgba(170,170,255,0.9);}
+.house.selected .barGraph.comfortableBar:hover:after {background-color: rgba(170,255,170,0.9);}
+.house.selected .barGraph.hotBar:hover:after {background-color: rgba(255,119,119,0.9);}
+
+.house.selected .barGraph:hover:after {
     font-weight: normal;
-    content: 'Energy used heating occupied rooms';
     display: block;
     position: absolute;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 5px;
     bottom:110%;
     min-width:100px;
     padding:5px;
-    right:100%;
+    left:0px;
     text-align: center;
     z-index: 3;
-    background: rgba(170,255,170,0.9);
-    border: solid 2px rgb(170,255,170);
+    background: rgba(200,200,200,0.9);
+    border: solid 2px #555;
 }
