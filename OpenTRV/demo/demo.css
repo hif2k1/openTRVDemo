@@ -13,6 +13,20 @@ body {
     position: relative;
 }
 
+.title {
+    font-size: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.link {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
 .guideText {
     position:absolute;
     border:solid grey 2px;
@@ -142,10 +156,10 @@ body {
     height:100%;
     display: block;
     content: '';
-    background: -webkit-linear-gradient(left top, white 50%, grey 51%);
-    background: -o-linear-gradient(bottom right, white 50%, grey 51%);
-    background: -moz-linear-gradient(bottom right, white 50%, grey 51%);
-    background: linear-gradient(to bottom right, white 50%, grey 51%);
+    background: -webkit-linear-gradient(left top, rgba(0,0,0,0) 50%, grey 51%);
+    background: -o-linear-gradient(bottom right, rgba(0,0,0,0) 50%, grey 51%);
+    background: -moz-linear-gradient(bottom right, rgba(0,0,0,0) 50%, grey 51%);
+    background: linear-gradient(to bottom right, rgba(0,0,0,0) 50%, grey 51%);
     position: absolute;
 }
 .roof:after{
@@ -153,10 +167,10 @@ body {
     height:100%;
     display: block;
     content: '';
-    background: -webkit-linear-gradient(right top, white 50%, grey 51%);
-    background: -o-linear-gradient(bottom left, white 50%, grey 51%);
-    background: -moz-linear-gradient(bottom left, white 50%, grey 51%);
-    background: linear-gradient(to bottom left, white 50%, grey 51%);
+    background: -webkit-linear-gradient(right top, rgba(0,0,0,0) 50%, grey 51%);
+    background: -o-linear-gradient(bottom left, rgba(0,0,0,0) 50%, grey 51%);
+    background: -moz-linear-gradient(bottom left, rgba(0,0,0,0) 50%, grey 51%);
+    background: linear-gradient(to bottom left, rgba(0,0,0,0) 50%, grey 51%);
     position: absolute;
     right:0px;
 }
@@ -187,7 +201,7 @@ body {
     height:30%;
     background-color: red;
     background-repeat: repeat;
-    background-image: url("rad.png");
+    background-image: url("../../img/rad.png");
     transition: background-color 2s;
 }
 
@@ -236,8 +250,8 @@ body {
     display: inline-block;
 }
 
-.house.tradTRV .valve {background-image: url('tradTRV.png');}
-.house.openTRV .valve,  .house.openTRVBoilerControl .valve {background-image: url('openTRV.png');}
+.house.tradTRV .valve {background-image: url('../../img/tradTRV.png');}
+.house.openTRV .valve,  .house.openTRVBoilerControl .valve {background-image: url('../../img/openTRV.png');}
 .house.tradTRV .roomNumber3 .valve, .house.openTRV  .roomNumber3 .valve{display: none;}
 
 
@@ -274,14 +288,14 @@ body {
 .boiler .flame.lit {
     background-position-y: -6px;
     background-size: cover;
-    background-image: url('flame.png');
+    background-image: url('../../img/flame.png');
     background-color: red;
 }
 
 .avatar {
     width:10%;
     height:25%;
-    background-image: url("avatar.png");
+    background-image: url("../../img/avatar.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 2;

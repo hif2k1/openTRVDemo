@@ -72,7 +72,11 @@ function drawHouses(){
     guideTextTitle = addElement(guideTextContainer, 'guideTextTitle');
     guideTextTitle.textContent = textStringsEnglish[modes[focusHouse]]['title'];
     guideTextArea = addElement(guideTextContainer, 'guideTextContent');
-    guideTextArea.textContent = textStringsEnglish[modes[focusHouse]]['guideText'];
+//    guideTextArea.textContent = textStringsEnglish[modes[focusHouse]]['guideText'];
+    facLink = document.createElement('a');
+    facLink.setAttribute('href', 'https://github.com/opentrv/OTWiki/wiki/FAQ');
+    facLink.textContent = 'Click here to go to our wiki for more on how RadBot works';
+    guideTextArea.appendChild(facLink);
     roomTextArea = addElement(guideTextContainer, 'guideTextContent');
     roomTextArea.textContent = textStringsEnglish.defaultRoomText;
     var resetButton = addElement(guideTextContainer, 'button reset');
@@ -175,7 +179,7 @@ function changeFocusHouse(newFocus){
     if (newFocus===null || newFocus===undefined || newFocus<0 || newFocus >3) return;
     focusHouse = newFocus;
     guideTextTitle.textContent = textStringsEnglish[modes[focusHouse]]['title'];
-    guideTextArea.textContent = textStringsEnglish[modes[focusHouse]]['guideText'];
+//    guideTextArea.textContent = textStringsEnglish[modes[focusHouse]]['guideText'];
     container.className = 'demoContainer roomOccupied'+roomOccupied + ' '+modes[focusHouse]+' '+detectedOrientation;
     for (var i=0; i<4; i++) {
         var houseClassName;
@@ -360,7 +364,7 @@ function automateChanges() {
 
 
 var textStringsEnglish = {
-    defaultRoomText: 'Click a room to move the person and compare their bills and how comfortable they are.',
+    defaultRoomText: 'Drag the person to a different room and compare their bills and how comfortable they are.',
     energyUsedLabel: 'Cost of heating occupied rooms', 
     noTRV: {
         guideText: 'Information about house with no valves',
@@ -412,7 +416,7 @@ var textStringsEnglish = {
         wastedBarLabel: "Extra heat requested by RadBots for rooms that wouldn't get up to temperature otherwise",
     },
     avatar: {
-        start: "Click a room to move me",
+        start: "Move me to a different room",
         tooCold: "Too cold!",
         tooHot:  "Too hot!",
         justRight: "Just right"
