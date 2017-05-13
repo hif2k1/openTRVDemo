@@ -75,7 +75,7 @@ function drawHouses(){
 //    guideTextArea.textContent = textStringsEnglish[modes[focusHouse]]['guideText'];
     facLink = document.createElement('a');
     facLink.setAttribute('href', 'https://github.com/opentrv/OTWiki/wiki/FAQ');
-    facLink.textContent = 'Click here to go to our wiki for more on how RadBot works';
+    facLink.textContent = 'Click here to go to our wiki for more on how Radbot works';
     guideTextArea.appendChild(facLink);
     roomTextArea = addElement(guideTextContainer, 'guideTextContent');
     roomTextArea.textContent = textStringsEnglish.defaultRoomText;
@@ -392,28 +392,28 @@ var textStringsEnglish = {
         wastedBarLabel: "Energy wasted (heating empty rooms)",
     },
     openTRV: {
-        guideText: 'Information about RadBot valves',
-        title:'RadBot',
+        guideText: 'Information about Radbot valves',
+        title:'Radbot',
         roomLabels: {
             0: 'Now most rooms are only heated when someone is in them',
             1: 'This room is still kept from overheating',
-            2: 'This room is still too cold because the RadBot can\'t communicate with the boiler',
-            3: 'This room has the thermostat so a RadBot valve can\'t be fitted here or the boiler will not be regulated'
+            2: 'This room is still too cold because the Radbot can\'t communicate with the boiler',
+            3: 'This room has the thermostat so a Radbot valve can\'t be fitted here or the boiler will not be regulated'
             },
-        energyBarLabel: "RadBot",
+        energyBarLabel: "Radbot",
         wastedBarLabel: "Energy wasted (heating one empty room)",
     },
     openTRVBoilerControl: {
-        guideText: 'Information about RadBot valves and boiler control',
-        title:'RadBot + boiler control',
+        guideText: 'Information about Radbot valves and boiler control',
+        title:'Radbot + boiler control',
         roomLabels: {
             0: 'Now all rooms are only heated when someone is in them',
             1: 'Now all rooms are only heated when someone is in them',
-            2: 'This room is kept just right when occupied as the RadBot can request a little extra heat to get it up to temperature',
+            2: 'This room is kept just right when occupied as the Radbot can request a little extra heat to get it up to temperature',
             3: 'No thermostat is needed so now this room is just like the others'
             },
-        energyBarLabel: "RadBot + boiler control",
-        wastedBarLabel: "Extra heat requested by RadBots for rooms that wouldn't get up to temperature otherwise",
+        energyBarLabel: "Radbot + boiler control",
+        wastedBarLabel: "Extra heat requested by Radbots for rooms that wouldn't get up to temperature otherwise",
     },
     avatar: {
         start: "Move me to a different room",

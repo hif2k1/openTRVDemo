@@ -1,10 +1,9 @@
 body {
     font-family: sans-serif;
-    font-weight: bold;
-    margin:0px;
 }
 
 #demo {
+    font-weight: bold;
     height:800px;
     width:800px;
     margin-top:10px;
@@ -133,13 +132,13 @@ body {
 .house.selected:before {font-size: 1.1em;}
 .house.selected.noTRV:before{ content: 'No radiator valves';}
 .house.selected.tradTRV:before{ content: 'Thermostatic valves (TRVs)';}
-.house.selected.openTRV:before{ content: 'RadBot valves';}
-.house.selected.openTRVBoilerControl:before{ content: 'RadBot + boiler control';}
+.house.selected.openTRV:before{ content: 'Radbot valves';}
+.house.selected.openTRVBoilerControl:before{ content: 'Radbot + boiler control';}
 
 .house.noTRV:before {content: "No valves";}
 .house.tradTRV:before {content: "Thermostatic";}
-.house.openTRV:before {content: "RadBot";}
-.house.openTRVBoilerControl:before {content: "RadBot+";}
+.house.openTRV:before {content: "Radbot";}
+.house.openTRVBoilerControl:before {content: "Radbot+";}
 
 .clear {
     clear: both;
@@ -387,7 +386,7 @@ body {
 .house.selected .energyBar.tradTRV .wastedBar:hover:after {content: "Cost of heating empty rooms";}
 .house.selected .energyBar.openTRV .wastedBar:hover:after {content: "Cost of heating one empty room";}
 .house.selected .energyBar.openTRVBoilerControl .wastedBar:hover:after {
-    content: "Extra heat requested by RadBots for rooms that wouldn't get up to temperature otherwise";
+    content: "Extra heat requested by Radbots for rooms that wouldn't get up to temperature otherwise";
     background-color: #ada;
 }
 .house.selected .energyBar.openTRVBoilerControl.selected .barGraph.wastedBar {
